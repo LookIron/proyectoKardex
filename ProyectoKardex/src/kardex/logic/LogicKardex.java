@@ -65,7 +65,16 @@ public class LogicKardex implements ILogicKardex {
 
 	@Override
 	public void registrarVenta(double unidades, double valorUnidade, double valorTotal) {
+		Registro venta = new Registro(unidades, valorUnidade, valorTotal);
 
+		Registro saldoAnterior = saldo.peek();
+		double nuevasUnidades = saldoAnterior.getUnidades() - unidades;
+		double nuevoValTotal = saldoAnterior.getValorTotal() - valorTotal;
+		double nuevoValUnid = nuevoValTotal / nuevasUnidades;
+
+		Registro nuevoSaldo = new Registro(nuevasUnidades, nuevoValUnid, nuevoValTotal);
+		saldo.push(nuevoSaldo);
+		entradaCompras.push(venta);
 	}
 
 }
