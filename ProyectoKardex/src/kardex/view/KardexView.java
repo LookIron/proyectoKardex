@@ -10,12 +10,6 @@ import kardex.logic.LogicKardex;
 
 public class KardexView extends JFrame implements ActionListener {
 
-	public static String INICIAL = "Inicial";
-
-	public static String VENTA = "Venta";
-
-	public static String COMPRA = "Compra";
-
 	private PanelKardex panelKardex;
 
 	private FrameInfo ventanaAgregar;
@@ -54,11 +48,11 @@ public class KardexView extends JFrame implements ActionListener {
 			} else if (tipo.equals("V")) {
 				int numero = 1;
 				panelKardex.addInformacion(ventanaAgregar.darUnidades(), ventanaAgregar.darPrecioUnidad(),
-				ventanaAgregar.darTotal(), numero, "V");
+						ventanaAgregar.darTotal(), numero, "V");
 				double unidades = Double.parseDouble(ventanaAgregar.darUnidades());
 				double valorUnidades = Double.parseDouble(ventanaAgregar.darPrecioUnidad());
 				double valorTotal = Double.parseDouble(ventanaAgregar.darTotal());
-				// mundo.registrarVenta(unidades, valorUnidades, valorTotal);
+				mundo.registrarVenta(unidades, valorUnidades, valorTotal);
 				numero++;
 				this.setVisible(true);
 				ventanaAgregar.setVisible(false);
@@ -66,7 +60,7 @@ public class KardexView extends JFrame implements ActionListener {
 			} else if (tipo.equals("C")) {
 				int numero = 1;
 				panelKardex.addInformacion(ventanaAgregar.darUnidades(), ventanaAgregar.darPrecioUnidad(),
-				ventanaAgregar.darTotal(), numero, "C");
+						ventanaAgregar.darTotal(), numero, "C");
 				double unidades = Double.parseDouble(ventanaAgregar.darUnidades());
 				double valorUnidades = Double.parseDouble(ventanaAgregar.darPrecioUnidad());
 				double valorTotal = Double.parseDouble(ventanaAgregar.darTotal());

@@ -74,7 +74,7 @@ public class LogicKardex implements ILogicKardex {
 
 		Registro nuevoSaldo = new Registro(nuevasUnidades, nuevoValUnid, nuevoValTotal);
 		saldo.push(nuevoSaldo);
-		entradaCompras.push(venta);
+		salidaVentas.push(venta);
 	}
 
 }
