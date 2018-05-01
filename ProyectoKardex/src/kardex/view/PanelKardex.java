@@ -14,9 +14,9 @@ public class PanelKardex extends JPanel {
 
 	private int fila;
 
-	private KardexView principal;
+	private VistaPEPS principal;
 
-	public PanelKardex(KardexView p) {
+	public PanelKardex(VistaPEPS p) {
 		llenarInicial();
 		fila = 2;
 		principal = p;

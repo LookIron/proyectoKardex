@@ -12,9 +12,9 @@ public class PanelBotones extends JPanel {
 
 	private JButton botonCancelar;
 
-	private KardexView principal;
+	private VistaPEPS principal;
 
-	public PanelBotones(KardexView p) {
+	public PanelBotones(VistaPEPS p) {
 		principal = p;
 		botonAgregar = new JButton("Aceptar");
 		botonAgregar.addActionListener(principal);

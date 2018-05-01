@@ -15,11 +15,11 @@ public class FrameInfo extends JFrame {
 	private JTextField[] cajasTexto;
 
 	@SuppressWarnings("unused")
-	private KardexView principal;
+	private VistaPEPS principal;
 
 	private PanelBotones panelBotones;
 
-	public FrameInfo(KardexView p) {
+	public FrameInfo(VistaPEPS p) {
 		principal = p;
 		etiquetas = new JLabel[3];
 		cajasTexto = new JTextField[3];

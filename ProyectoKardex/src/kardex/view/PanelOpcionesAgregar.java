@@ -13,9 +13,9 @@ class PanelOpcionesAgregar extends JPanel {
 
 	private JButton botonVenta;
 
-	private KardexView principal;
+	private VistaPEPS principal;
 
-	public PanelOpcionesAgregar(KardexView p) {
+	public PanelOpcionesAgregar(VistaPEPS p) {
 
 		principal = p;
 
