@@ -12,7 +12,8 @@ public class LogicKardex implements ILogicKardex {
 		Registro saldoInicial = new Registro(saldoInicialUnid, saldoInicialValUnid, saldoInicialValTotal);
 		saldo = new Stack<Registro>();
 		saldo.push(saldoInicial);
-
+		entradaCompras = new Stack<>();
+		salidaVentas = new Stack<>();
 	}
 
 	public double getSaldoUnidades() {

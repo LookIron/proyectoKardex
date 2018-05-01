@@ -59,7 +59,7 @@ public class PanelKardex extends JPanel {
 		}
 	}
 
-	public void addInformacion(String unidades, String costoUnidad, String costoTotal, int numero, String tipo) {
+	public void addInformacion(String unidades, String costoUnidad, String costoTotal, int numero, String tipo,String uSaldos,String cUSaldo, String cTSaldo) {
 		int filaActu = 0;
 		if (fila == 2) {
 			try {
@@ -85,6 +85,10 @@ public class PanelKardex extends JPanel {
 				matriz[fila][5].setText(costoUnidad);
 				matriz[fila][6].setText(costoTotal);
 				matriz[fila][0].setText("Venta # " + numero + "");
+				matriz[fila][7].setText(uSaldos);
+				matriz[fila][8].setText(cUSaldo);
+				matriz[fila][9].setText(cTSaldo);
+
 				fila++;
 
 			} else {
@@ -95,57 +99,12 @@ public class PanelKardex extends JPanel {
 				matriz[fila][2].setText(costoUnidad);
 				matriz[fila][3].setText(costoTotal);
 				matriz[fila][0].setText("Compra # " + numero + "");
+				matriz[fila][7].setText(uSaldos);
+				matriz[fila][8].setText(cUSaldo);
+				matriz[fila][9].setText(cTSaldo);
 				fila++;
 			}
 
-			try {
-				if (matriz[fila - 1][0].getText().equals("  ") || matriz[fila - 1][0].getText().equals("I.Inicial")) {
-					boolean esta = false;
-					for (int i = fila - 1; i > 0 && !esta; i--) {
-						if (matriz[i][8].getText().equals(costoUnidad)) {
-							esta = true;
-							filaActu = i;
-						}
-					}
-					if (esta) {
-						int unidadesActu = Integer.parseInt(matriz[filaActu][7].getText());
-						matriz[filaActu][7].setText((unidadesActu + Integer.parseInt(unidades)) + "");
-						int costoTotalAct = Integer.parseInt(matriz[filaActu][7].getText())
-								* Integer.parseInt(matriz[filaActu][8].getText());
-						matriz[filaActu][9].setText(costoTotalAct + "");
-					} else {
-						matriz[fila][7].setText(unidades);
-						matriz[fila][8].setText(costoUnidad);
-						matriz[fila][9].setText(costoTotal);
-						fila++;
-					}
-				}
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(principal, "información erronea!", "advertencia",
-						JOptionPane.ERROR_MESSAGE);
-			}
-		}
-		validate();
-		repaint();
-	}
-
-	public void addCompra(String unidades, String costoUnidad, String costoTotal, int numero) {
-		int filaActu = 0;
-		if (fila == 2) {
-			try {
-				Integer.parseInt(unidades);
-				Double.parseDouble(costoUnidad);
-				Double.parseDouble(costoTotal);
-				matriz[fila][1].setText(unidades);
-				matriz[fila][2].setText(costoUnidad);
-				matriz[fila][3].setText(costoTotal);
-				matriz[fila][0].setText("Compra #" + numero + "");
-				fila++;
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(principal, "información erronea!", "advertencia",
-						JOptionPane.ERROR_MESSAGE);
-			}
-		} else {
 			try {
 				if (matriz[fila - 1][0].getText().equals("  ") || matriz[fila - 1][0].getText().equals("I.Inicial")) {
 					boolean esta = false;
