@@ -37,4 +37,8 @@ public class PanelOpcionesAgregarPP extends JPanel {
 		add(botonCompra);
 		add(botonVenta);
 	}
+
+	public void quitarOpor() {
+		botonInicial.setEnabled(false);
+	}
 }

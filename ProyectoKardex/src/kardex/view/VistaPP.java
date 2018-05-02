@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import kardex.logic.LogicKardex;
 
@@ -20,6 +21,10 @@ public class VistaPP extends JFrame implements ActionListener {
 	private PanelOpcionesAgregarPP panelBotonesPP;
 	
 	private String tipo;
+	
+	private int numCompra = 1;
+	
+	private int numVenta = 1;
 
 	public VistaPP() {
 		panelKardexPP = new PanelKardexPP(this);
@@ -35,11 +40,14 @@ public class VistaPP extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		try{
 		String comando = e.getActionCommand();
 		if (comando.equals("A")) {
 			if (tipo.equals("I")) {
-				
+				if(Double.parseDouble(ventanaAgregarPP.darUnidades())<=0 || Double.parseDouble(ventanaAgregarPP.darPrecioUnidad())<=0
+						|| Double.parseDouble(ventanaAgregarPP.darPrecioUnidad())<=0){
+					throw new Exception("Señor Stark... no me quiero ir....");
+				}
 				mundo.setSaldoUnidades(Double.parseDouble(ventanaAgregarPP.darUnidades()));
 				mundo.setSaldoValorUnidad(Double.parseDouble(ventanaAgregarPP.darPrecioUnidad()));
 				mundo.setSaldoValorTotal(Double.parseDouble(ventanaAgregarPP.darPrecioUnidad()));
@@ -48,30 +56,30 @@ public class VistaPP extends JFrame implements ActionListener {
 				this.setVisible(true);
 				ventanaAgregarPP.setVisible(false);
 				ventanaAgregarPP.limpiar();
+				panelBotonesPP.quitarOpor();
 			} 
 			else if (tipo.equals("V")) {
-				int numero = 1;
+				
 				double unidades = Double.parseDouble(ventanaAgregarPP.darUnidades());
 				double valorUnidades = Double.parseDouble(ventanaAgregarPP.darPrecioUnidad());
 				double valorTotal = Double.parseDouble(ventanaAgregarPP.darTotal());
 				mundo.registrarVenta(unidades, valorUnidades, valorTotal);
 				panelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
-						ventanaAgregarPP.darTotal(), numero, "V",mundo.getSaldoUnidades()+"", mundo.getSaldoValorUnidad()+"", mundo.getSaldoValorTotal()+"");
+						ventanaAgregarPP.darTotal(), numVenta, "V",mundo.getSaldoUnidades()+"", mundo.getSaldoValorUnidad()+"", mundo.getSaldoValorTotal()+"");
 				
-				numero++;
+				numVenta++;
 				this.setVisible(true);
 				ventanaAgregarPP.setVisible(false);
 				ventanaAgregarPP.limpiar();
 			} else if (tipo.equals("C")) {
-				int numero = 1;
 				double unidades = Double.parseDouble(ventanaAgregarPP.darUnidades());
 				double valorUnidades = Double.parseDouble(ventanaAgregarPP.darPrecioUnidad());
 				double valorTotal = Double.parseDouble(ventanaAgregarPP.darTotal());
 				 mundo.registrarCompra(unidades, valorUnidades, valorTotal);
 				panelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
-						ventanaAgregarPP.darTotal(), numero, "C", mundo.getSaldoUnidades()+"", mundo.getSaldoValorUnidad()+"", mundo.getSaldoValorTotal()+"");
+						ventanaAgregarPP.darTotal(), numCompra, "C", mundo.getSaldoUnidades()+"", mundo.getSaldoValorUnidad()+"", mundo.getSaldoValorTotal()+"");
 
-				numero++;
+				numCompra++;
 				this.setVisible(true);
 				ventanaAgregarPP.setVisible(false);
 				ventanaAgregarPP.limpiar();
@@ -93,6 +101,10 @@ public class VistaPP extends JFrame implements ActionListener {
 			tipo = "C";
 			ventanaAgregarPP.setVisible(true);
 		}
-		
+		}catch(Exception eerr){
+			if(eerr.getMessage().equals("Señor Stark... no me quiero ir....")){
+				JOptionPane.showMessageDialog(ventanaAgregarPP, "No se permite ingresar valores negativos");
+			}
+		}
 	}
 }
