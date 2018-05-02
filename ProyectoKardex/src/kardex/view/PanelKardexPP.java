@@ -60,7 +60,7 @@ public class PanelKardexPP extends JPanel {
 		}
 	}
 
-	public void addInformacion(String unidades, String costoUnidad, String costoTotal, int numero, String tipo) {
+	public void addInformacion(String unidades, String costoUnidad, String costoTotal, int numero, String tipo, String saldoUni, String saldoPreUni, String saldoTotal) {
 		int filaActu = 0;
 		if (fila == 2) {
 			try {
@@ -86,6 +86,9 @@ public class PanelKardexPP extends JPanel {
 				matriz[fila][5].setText(costoUnidad);
 				matriz[fila][6].setText(costoTotal);
 				matriz[fila][0].setText("Venta # " + numero + "");
+				matriz[fila][7].setText(saldoUni);
+				matriz[fila][8].setText(saldoPreUni);
+				matriz[fila][9].setText(saldoTotal);
 				fila++;
 
 			} else {
@@ -96,6 +99,9 @@ public class PanelKardexPP extends JPanel {
 				matriz[fila][2].setText(costoUnidad);
 				matriz[fila][3].setText(costoTotal);
 				matriz[fila][0].setText("Compra # " + numero + "");
+				matriz[fila][7].setText(saldoUni);
+				matriz[fila][8].setText(saldoPreUni);
+				matriz[fila][9].setText(saldoTotal);
 				fila++;
 			}
 

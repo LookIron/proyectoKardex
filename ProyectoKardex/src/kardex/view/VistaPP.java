@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import kardex.logic.LogicKardex;
 
+@SuppressWarnings("serial")
 public class VistaPP extends JFrame implements ActionListener {
 
 	private PanelKardexPP panelKardexPP;
@@ -38,22 +39,24 @@ public class VistaPP extends JFrame implements ActionListener {
 		String comando = e.getActionCommand();
 		if (comando.equals("A")) {
 			if (tipo.equals("I")) {
-				panelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
-						ventanaAgregarPP.darTotal(), 0, "","","","");
+				
 				mundo.setSaldoUnidades(Double.parseDouble(ventanaAgregarPP.darUnidades()));
 				mundo.setSaldoValorUnidad(Double.parseDouble(ventanaAgregarPP.darPrecioUnidad()));
 				mundo.setSaldoValorTotal(Double.parseDouble(ventanaAgregarPP.darPrecioUnidad()));
+				panelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
+						ventanaAgregarPP.darTotal(), 0, "I", "", "", "");
 				this.setVisible(true);
 				ventanaAgregarPP.setVisible(false);
 				ventanaAgregarPP.limpiar();
-			} else if (tipo.equals("V")) {
+			} 
+			else if (tipo.equals("V")) {
 				int numero = 1;
 				double unidades = Double.parseDouble(ventanaAgregarPP.darUnidades());
 				double valorUnidades = Double.parseDouble(ventanaAgregarPP.darPrecioUnidad());
 				double valorTotal = Double.parseDouble(ventanaAgregarPP.darTotal());
 				mundo.registrarVenta(unidades, valorUnidades, valorTotal);
 				panelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
-						ventanaAgregarPP.darTotal(), numero, "V",mundo.getSaldoUnidades()+"",mundo.getSaldoValorUnidad()+"",mundo.getSaldoValorTotal()+"");
+						ventanaAgregarPP.darTotal(), numero, "V",mundo.getSaldoUnidades()+"", mundo.getSaldoValorUnidad()+"", mundo.getSaldoValorTotal()+"");
 				
 				numero++;
 				this.setVisible(true);
@@ -65,8 +68,8 @@ public class VistaPP extends JFrame implements ActionListener {
 				double valorUnidades = Double.parseDouble(ventanaAgregarPP.darPrecioUnidad());
 				double valorTotal = Double.parseDouble(ventanaAgregarPP.darTotal());
 				 mundo.registrarCompra(unidades, valorUnidades, valorTotal);
-				ppanelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
-						ventanaAgregarPP.darTotal(), numero, "C",mundo.getSaldoUnidades()+"",mundo.getSaldoValorUnidad()+"",mundo.getSaldoValorTotal()+"");
+				panelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
+						ventanaAgregarPP.darTotal(), numero, "C", mundo.getSaldoUnidades()+"", mundo.getSaldoValorUnidad()+"", mundo.getSaldoValorTotal()+"");
 
 				numero++;
 				this.setVisible(true);
