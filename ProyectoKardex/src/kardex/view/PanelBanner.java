@@ -31,10 +31,9 @@ public class PanelBanner extends JPanel{
 	public PanelBanner() {
 		setLayout(new GridLayout(1, 1));
 		setBackground(Color.WHITE);
-		ImageIcon icono = new ImageIcon("data/automatica.jpg");
 
 		imagen = new JLabel("");
-		imagen.setIcon(icono);
+		imagen.setIcon(new ImageIcon(KardexView.class.getResource("/resources/automatica.jpg")));
 		imagen.setHorizontalAlignment(SwingConstants.CENTER);
 		imagen.setVerticalAlignment(SwingConstants.CENTER);
 		add(imagen);
