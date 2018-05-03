@@ -1,78 +1,143 @@
 package kardex.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.Font;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import kardex.logic.LogicKardex;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class KardexView extends JFrame implements ActionListener {
 
-	private JButton btnPEPS;
-	private JButton btnPP;
+	private JPanel contentPane;
+
+	private JButton btnIniciarPeps;
+	private JButton btnIniciar;
 	private JLabel lblMensaje;
 	private JPanel auxiliar;
 	private String tipo = "";
-	
-	//Las dos vistas: PEPS PP
+
+	// Las dos vistas: PEPS PP
 	private VistaPEPS peps;
 	private VistaPP pp;
-	
 
-	public KardexView() {
-		
-		setLayout(new BorderLayout());
-		
-		auxiliar = new JPanel();
-		auxiliar.setLayout(new FlowLayout());
-		
-		lblMensaje = new JLabel("Eliga el metodo para trabajar en el Kardex");
-		
-		btnPEPS = new JButton("PEPS");
-		btnPEPS.addActionListener(this);
-		btnPEPS.setActionCommand("PEPS");
-		
-		btnPP = new JButton("PP");
-		btnPP.addActionListener(this);
-		btnPP.setActionCommand("PP");
-		
-		auxiliar.add(btnPEPS);
-		auxiliar.add(btnPP);
-		
-		add(lblMensaje, BorderLayout.NORTH);
-		add(auxiliar,BorderLayout.SOUTH);
-		
-		pack();
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					KardexView frame = new KardexView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
-	@Override
+	/**
+	 * Create the frame.
+	 */
+	public KardexView() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 729, 386);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+
+		auxiliar = new JPanel();
+		auxiliar.setLayout(new FlowLayout());
+
+		JPanel panelImg = new JPanel();
+		panelImg.setBackground(Color.WHITE);
+		contentPane.add(panelImg, BorderLayout.CENTER);
+		panelImg.setLayout(null);
+
+		JPanel panelSeleccion = new JPanel();
+		panelSeleccion.setBounds(25, 52, 249, 90);
+		panelSeleccion.setBackground(Color.WHITE);
+		panelImg.add(panelSeleccion);
+
+		JLabel lblKardexPorPp = new JLabel("Kardex por PP");
+		lblKardexPorPp.setBounds(21, 24, 88, 17);
+		lblKardexPorPp.setFont(new Font("Times New Roman", Font.ITALIC, 14));
+		panelSeleccion.setLayout(null);
+
+		JLabel lblPEPS = new JLabel("Kardex por PEPS");
+		lblPEPS.setBounds(21, 58, 120, 17);
+		lblPEPS.setFont(new Font("Times New Roman", Font.ITALIC, 14));
+		panelSeleccion.add(lblPEPS);
+		panelSeleccion.add(lblKardexPorPp);
+
+		btnIniciar = new JButton("Iniciar PP");
+		btnIniciar.addActionListener(this);
+		btnIniciar.setBounds(127, 22, 89, 23);
+		btnIniciar.setActionCommand("Iniciar PP");
+		panelSeleccion.add(btnIniciar);
+
+		btnIniciarPeps = new JButton("Iniciar PEPS");
+		btnIniciarPeps.addActionListener(this);
+		btnIniciarPeps.setBounds(127, 56, 89, 23);
+		btnIniciarPeps.setActionCommand("Iniciar PEPS");
+
+		panelSeleccion.add(btnIniciarPeps);
+
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 294, 41);
+		panelImg.add(panel);
+		panel.setBackground(Color.WHITE);
+		panel.setLayout(null);
+
+		JLabel labelTitulo = new JLabel("Bienvenido al Gestor de Kardex ");
+		labelTitulo.setBounds(24, 11, 253, 24);
+		labelTitulo.setHorizontalAlignment(SwingConstants.LEFT);
+		labelTitulo.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		panel.add(labelTitulo);
+
+		Panel panel_1 = new Panel();
+		panel_1.setBackground(Color.DARK_GRAY);
+		panel_1.setBounds(300, 0, 403, 348);
+		panelImg.add(panel_1);
+
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(KardexView.class.getResource("/resources/img-AerialCompany-hero.png")));
+		panel_1.add(label);
+
+		JLabel lblM = new JLabel("");
+		lblM.setIcon(new ImageIcon(KardexView.class.getResource("/resources/gg.png")));
+		lblM.setBounds(56, 153, 238, 174);
+		panelImg.add(lblM);
+		this.setLocationRelativeTo(null);
+
+	}
+
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
-		if(comando.equals("PEPS")) {
+		if (comando.equals("Iniciar PEPS")) {
 			tipo = "PEPS";
 			setVisible(false);
 			peps = new VistaPEPS();
 			peps.setVisible(true);
-			
-		}else if(comando.equals("PP")){
+
+		} else if (comando.equals("Iniciar PP")) {
 			tipo = "PP";
 			setVisible(false);
 			pp = new VistaPP();
 			pp.setVisible(true);
 		}
-	}
-
-	public static void main(String[] args) {
-		KardexView prin = new KardexView();
-		
-		prin.setVisible(true);
-		
 	}
 }
