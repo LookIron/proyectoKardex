@@ -57,7 +57,7 @@ public class PanelVista extends JPanel {
 		removeAll();
 		setLayout(new BorderLayout());
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
-		JTextArea balance = new JTextArea("                                                                                                                        Balance General\n                                                                                                                            Contabilidad\n                                                                                                                                  2017");
+		JTextArea balance = new JTextArea("                                                                                                                        Balance General\n                                                                                                                            Contabilidad\n                                                                                                                                  2018");
 		balance.setEditable(false);
 		balance.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		JPanel aux = new JPanel();
@@ -91,7 +91,7 @@ public class PanelVista extends JPanel {
 		removeAll();
 		setLayout(new BorderLayout());
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
-		JTextArea estado = new JTextArea("                                                                                                                      Estado de Resultados\n                                                                                                                               Contabilidad\n                                                                                                                                     2017");
+		JTextArea estado = new JTextArea("                                                                                                                      Estado de Resultados\n                                                                                                                               Contabilidad\n                                                                                                                                     2018");
 		estado.setEditable(false);
 		estado.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		add(estado,BorderLayout.NORTH);
