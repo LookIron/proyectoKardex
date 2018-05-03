@@ -9,20 +9,20 @@ import javax.swing.JFrame;
 import kardex.logic.ILogicKardex;
 import kardex.logic.LogicKardex;
 
-public class VistaPEPS extends JFrame implements ActionListener {
+public class VistaPEPS extends JFrame implements ActionListener{
 
 	private PanelKardex panelKardex;
 
 	private FrameInfo ventanaAgregar;
 
 	private LogicKardex mundo;
-
+	
 	private ILogicKardex temp;
 
 	private PanelOpcionesAgregar panelBotones;
 
 	private String tipo;
-
+	
 	public VistaPEPS() {
 		panelKardex = new PanelKardex(this);
 		ventanaAgregar = new FrameInfo(this);
@@ -33,8 +33,6 @@ public class VistaPEPS extends JFrame implements ActionListener {
 		add(panelBotones, BorderLayout.SOUTH);
 		add(panelKardex, BorderLayout.CENTER);
 		pack();
-		this.setLocationRelativeTo(null);
-
 	}
 
 	@Override
@@ -43,13 +41,11 @@ public class VistaPEPS extends JFrame implements ActionListener {
 		if (comando.equals("A")) {
 			if (tipo.equals("I")) {
 				panelKardex.addInformacion(ventanaAgregar.darUnidades(), ventanaAgregar.darPrecioUnidad(),
-						ventanaAgregar.darTotal(), 0, "", "", "", "");
+						ventanaAgregar.darTotal(), 0, "","","","");
 				mundo.setSaldoUnidades(Double.parseDouble(ventanaAgregar.darUnidades()));
 				mundo.setSaldoValorUnidad(Double.parseDouble(ventanaAgregar.darPrecioUnidad()));
 				mundo.setSaldoValorTotal(Double.parseDouble(ventanaAgregar.darPrecioUnidad()));
-				temp = new LogicKardex(Double.parseDouble(ventanaAgregar.darUnidades()),
-						Double.parseDouble(ventanaAgregar.darPrecioUnidad()),
-						Double.parseDouble(ventanaAgregar.darPrecioUnidad()));
+				temp = new LogicKardex(Double.parseDouble(ventanaAgregar.darUnidades()), Double.parseDouble(ventanaAgregar.darPrecioUnidad()), Double.parseDouble(ventanaAgregar.darPrecioUnidad()));
 				this.setVisible(true);
 				ventanaAgregar.setVisible(false);
 				ventanaAgregar.limpiar();
@@ -58,11 +54,10 @@ public class VistaPEPS extends JFrame implements ActionListener {
 				double unidades = Double.parseDouble(ventanaAgregar.darUnidades());
 				double valorUnidades = Double.parseDouble(ventanaAgregar.darPrecioUnidad());
 				double valorTotal = Double.parseDouble(ventanaAgregar.darTotal());
-				mundo.registrarVenta(unidades, valorUnidades, valorTotal);
+				mundo.registrarVenta(unidades, valorUnidades, valorTotal);				
 				panelKardex.addInformacion(ventanaAgregar.darUnidades(), ventanaAgregar.darPrecioUnidad(),
-						ventanaAgregar.darTotal(), numero, "V", mundo.getSaldoUnidades() + "",
-						mundo.getSaldoValorUnidad() + "", mundo.getSaldoValorTotal() + "");
-
+						ventanaAgregar.darTotal(), numero, "V", mundo.getSaldoUnidades()+"", mundo.getSaldoValorUnidad()+"", mundo.getSaldoValorTotal()+"");
+				
 				numero++;
 				this.setVisible(true);
 				ventanaAgregar.setVisible(false);
@@ -74,9 +69,8 @@ public class VistaPEPS extends JFrame implements ActionListener {
 				double valorTotal = Double.parseDouble(ventanaAgregar.darTotal());
 				mundo.registrarCompra(unidades, valorUnidades, valorTotal);
 				panelKardex.addInformacion(ventanaAgregar.darUnidades(), ventanaAgregar.darPrecioUnidad(),
-						ventanaAgregar.darTotal(), numero, "C", mundo.getSaldoUnidades() + "",
-						mundo.getSaldoValorUnidad() + "", mundo.getSaldoValorTotal() + "");
-
+						ventanaAgregar.darTotal(), numero, "C", mundo.getSaldoUnidades()+"", mundo.getSaldoValorUnidad()+"", mundo.getSaldoValorTotal()+"");
+				
 				numero++;
 				this.setVisible(true);
 				ventanaAgregar.setVisible(false);
@@ -98,7 +92,11 @@ public class VistaPEPS extends JFrame implements ActionListener {
 			this.setVisible(false);
 			tipo = "C";
 			ventanaAgregar.setVisible(true);
+		} else if (comando.equals("Vol")){
+			this.setVisible(false);
+			KardexView prin = new KardexView();
+			prin.setVisible(true);
 		}
-
+		
 	}
 }
