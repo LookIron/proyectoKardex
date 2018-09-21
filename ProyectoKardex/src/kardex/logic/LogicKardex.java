@@ -55,7 +55,9 @@ public class LogicKardex implements ILogicKardex {
 
 		Registro saldoAnterior = saldo.peek();
 		double nuevasUnidades = saldoAnterior.getUnidades() + unidades;
+		System.out.println(unidades);
 		double nuevoValTotal = saldoAnterior.getValorTotal() + valorTotal;
+		System.out.println(valorTotal);
 		double nuevoValUnid = nuevoValTotal / nuevasUnidades;
 
 		Registro nuevoSaldo = new Registro(nuevasUnidades, nuevoValUnid, nuevoValTotal);

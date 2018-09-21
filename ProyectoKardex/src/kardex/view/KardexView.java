@@ -84,7 +84,7 @@ public class KardexView extends JFrame implements ActionListener {
 		JLabel lblPEPS = new JLabel("Kardex por PEPS");
 		lblPEPS.setBounds(21, 58, 120, 17);
 		lblPEPS.setFont(new Font("Times New Roman", Font.ITALIC, 14));
-		panelSeleccion.add(lblPEPS);
+//		panelSeleccion.add(lblPEPS);
 		panelSeleccion.add(lblKardexPorPp);
 		
 		JLabel lblFina = new JLabel("Estados Fin.");
@@ -99,17 +99,17 @@ public class KardexView extends JFrame implements ActionListener {
 		btnIniciar.setActionCommand("Iniciar PP");
 		panelSeleccion.add(btnIniciar);
 
-		btnIniciarPeps = new JButton("Iniciar PEPS");
-		btnIniciarPeps.addActionListener(this);
-		btnIniciarPeps.setBounds(127, 56, 89, 23);
-		btnIniciarPeps.setActionCommand("Iniciar PEPS");
+//		btnIniciarPeps = new JButton("Iniciar PEPS");
+//		btnIniciarPeps.addActionListener(this);
+//		btnIniciarPeps.setBounds(127, 56, 89, 23);
+//		btnIniciarPeps.setActionCommand("Iniciar PEPS");
 		
 		btnHomunculo = new JButton("Estados Financieros");
 		btnHomunculo.setBounds(127, 0, 89, 23);
 		btnHomunculo.addActionListener(this);
 		btnHomunculo.setActionCommand("Estados Financieros");
 
-		panelSeleccion.add(btnIniciarPeps);
+//		panelSeleccion.add(btnIniciarPeps);
 		
 		panelSeleccion.add(btnHomunculo);
 

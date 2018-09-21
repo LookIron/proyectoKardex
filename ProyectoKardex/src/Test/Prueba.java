@@ -2,15 +2,13 @@ package Test;
 
 import java.text.DecimalFormat;
 
-import org.junit.jupiter.api.Test;
-
 import kardex.logic.LogicKardex;
 
-class Prueba {
+
+public class Prueba {
 
 	private LogicKardex kardex = new LogicKardex(1079, 1400, 1510600);
 
-	@Test
 	void test() {
 
 		System.out.println("-----------------------Compra-----------------------");

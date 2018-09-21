@@ -3,6 +3,7 @@ package kardex.view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,6 +26,8 @@ public class VistaPP extends JFrame implements ActionListener {
 	private int numCompra = 1;
 
 	private int numVenta = 1;
+	
+	private double valorTotal = 1;
 
 	public VistaPP() {
 		panelKardexPP = new PanelKardexPP(this);
@@ -51,13 +54,15 @@ public class VistaPP extends JFrame implements ActionListener {
 					}
 					mundo.setSaldoUnidades(Double.parseDouble(ventanaAgregarPP.darUnidades()));
 					mundo.setSaldoValorUnidad(Double.parseDouble(ventanaAgregarPP.darPrecioUnidad()));
-					mundo.setSaldoValorTotal(Double.parseDouble(ventanaAgregarPP.darPrecioUnidad()));
+					mundo.setSaldoValorTotal(Double.parseDouble(ventanaAgregarPP.darTotal()));
+					
 					panelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
 							ventanaAgregarPP.darTotal(), 0, "I", "", "", "");
 					this.setVisible(true);
 					ventanaAgregarPP.setVisible(false);
 					ventanaAgregarPP.limpiar();
 					panelBotonesPP.quitarOpor();
+					
 				} else if (tipo.equals("V")) {
 					if (Double.parseDouble(ventanaAgregarPP.darUnidades()) <= 0
 							|| Double.parseDouble(ventanaAgregarPP.darPrecioUnidad()) <= 0
@@ -96,9 +101,10 @@ public class VistaPP extends JFrame implements ActionListener {
 					double valorUnidades = Double.parseDouble(ventanaAgregarPP.darPrecioUnidad());
 					double valorTotal = Double.parseDouble(ventanaAgregarPP.darTotal());
 					mundo.registrarCompra(unidades, valorUnidades, valorTotal);
+					DecimalFormat df1 = new DecimalFormat("#.00");
 					panelKardexPP.addInformacion(ventanaAgregarPP.darUnidades(), ventanaAgregarPP.darPrecioUnidad(),
 							ventanaAgregarPP.darTotal(), numCompra, "C", mundo.getSaldoUnidades() + "",
-							mundo.getSaldoValorUnidad() + "", mundo.getSaldoValorTotal() + "");
+							df1.format(mundo.getSaldoValorUnidad()), df1.format(mundo.getSaldoValorTotal()));
 
 					numCompra++;
 					this.setVisible(true);
